@@ -1,22 +1,11 @@
 package FantasyAdventureLab.Players.Healers;
 
-import FantasyAdventureLab.Items.HealingTools.HealingTool;
+import FantasyAdventureLab.Items.HealingTools.IHealingTool;
 import FantasyAdventureLab.Players.Player;
 
-public class Cleric extends Player {
+public class Cleric extends Healer {
 
-    HealingTool healintTool;
-
-
-    public Cleric (String name, HealingTool healingTool ){
-        super(name);
-        this.healintTool = healingTool;
-
+    public Cleric (String name, IHealingTool healingTool ){
+        super(name, healingTool);
     }
-
-//    public String heal(Monster monster){
-//
-//        healintTool.heal;
-//
-//    }
 }

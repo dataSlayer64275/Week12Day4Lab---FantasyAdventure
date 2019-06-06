@@ -1,21 +1,30 @@
 package FantasyAdventureLab.Players.Fighters;
-
-import FantasyAdventureLab.Enemies.Enemy;
+import FantasyAdventureLab.Armour.Armour;
 import FantasyAdventureLab.Items.Weapons.IWeapon;
-import FantasyAdventureLab.Players.Player;
+import java.util.ArrayList;
 
-public class Warrior extends Player {
+public class Warrior extends Fighter {
 
-    IWeapon weapon;
-
+    private ArrayList<Armour> armour;
 
     public Warrior (String name, IWeapon weapon){
-        super(name);
-        this.weapon = weapon;
+        super(name, weapon);
+        this.armour = new ArrayList<Armour>();
     }
 
-    public void attack(Enemy monster){
-        weapon.attack(monster);
+    public int getDefensePoints(){
+        int totalDefensePoints = 0;
+        for (Armour piece: armour){
+            totalDefensePoints += piece.getDefensePoints();
+        }
+        return totalDefensePoints;
+    }
 
+    public void decreaseHP(int damage){
+        HP -= ( damage - getDefensePoints());
+    }
+
+    public void addArmour(Armour piece) {
+        this.armour.add(piece);
     }
 }
